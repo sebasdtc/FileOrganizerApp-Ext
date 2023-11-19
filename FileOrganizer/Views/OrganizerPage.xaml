@@ -6,235 +6,73 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
-    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     mc:Ignorable="d">
+    <ScrollView>
+        <Grid x:Name="ContentArea" Margin="0,0,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-    <Grid x:Name="ContentArea">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <StackPanel
-            Grid.Row="0"
-            Margin="0,20"
-            Padding="0,0,15,0"
-            HorizontalAlignment="Stretch">
-            <CommandBar
-                HorizontalAlignment="Left"
-                HorizontalContentAlignment="Stretch"
-                Background="Transparent"
-                DefaultLabelPosition="Right"
-                IsOpen="False">
-                <AppBarButton Icon="Add" Label="Add" />
-                <AppBarButton Icon="Edit" Label="Edit" />
-                <AppBarButton Icon="Share" Label="Share" />
-                <CommandBar.SecondaryCommands>
-                    <AppBarButton Icon="Setting" Label="Settings">
-                        <AppBarButton.KeyboardAccelerators>
-                            <KeyboardAccelerator Key="I" Modifiers="Control" />
-                        </AppBarButton.KeyboardAccelerators>
-                    </AppBarButton>
-                </CommandBar.SecondaryCommands>
-            </CommandBar>
-            <controls:SettingsCard
-                Margin="0,10"
-                Description="Seleccione la carpeta que desea organizar."
-                Header="Configuración de Carpeta"
-                HeaderIcon="{ui:FontIcon Glyph=&#xE838;}">
-                <Button Content="Abrir carpeta" />
-            </controls:SettingsCard>
-
-            <TextBlock
-                Margin="0,7"
-                FontSize="20"
-                Style="{StaticResource BaseTextBlockStyle}"
-                Text="Reglas" />
-        </StackPanel>
-
-        <ScrollView Grid.Row="1">
-            <Grid Padding="0,0,15,0">
-                <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical">
-                    <win:StackPanel.ChildrenTransitions>
-                        <win:TransitionCollection>
-                            <win:EntranceThemeTransition FromVerticalOffset="50" />
-                            <win:RepositionThemeTransition IsStaggeringEnabled="False" />
-                        </win:TransitionCollection>
-                    </win:StackPanel.ChildrenTransitions>
-
-                    <!--  tarjetas de reglas  -->
-                    <controls:SettingsExpander
-                        Margin="0,2"
-                        Description="The SettingsExpander has the same properties as a SettingsCard"
-                        Header="SettingsExpander"
-                        HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}">
-                        <ToggleSwitch
-                            IsOn="True"
-                            OffContent="Desactivado"
-                            OnContent="Activado" />
-
-                        <controls:SettingsExpander.Items>
-                            <controls:SettingsCard Header="A basic SettingsCard within an SettingsExpander">
-                                <Button Content="Button" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard
-                                Description="SettingsCard within an Expander can be made clickable too!"
-                                Header="This item can be clicked"
-                                IsClickEnabled="True" />
-
-                            <controls:SettingsCard ContentAlignment="Left">
-                                <CheckBox Content="Here the ContentAlignment is set to Left. This is great for e.g. CheckBoxes or RadioButtons" />
-                            </controls:SettingsCard>
-                        </controls:SettingsExpander.Items>
-                    </controls:SettingsExpander>
-
-                    <!--  tarjetas de reglas  -->
-                    <controls:SettingsExpander
-                        Margin="0,2"
-                        Description="The SettingsExpander has the same properties as a SettingsCard"
-                        Header="SettingsExpander"
-                        HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}">
-                        <ToggleSwitch
-                            IsOn="True"
-                            OffContent="Desactivado"
-                            OnContent="Activado" />
-                        <controls:SettingsExpander.Items>
-                            <controls:SettingsCard Header="A basic SettingsCard within an SettingsExpander">
-                                <Button Content="Button" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard
-                                Description="SettingsCard within an Expander can be made clickable too!"
-                                Header="This item can be clicked"
-                                IsClickEnabled="True" />
-
-                            <controls:SettingsCard ContentAlignment="Left">
-                                <CheckBox Content="Here the ContentAlignment is set to Left. This is great for e.g. CheckBoxes or RadioButtons" />
-                            </controls:SettingsCard>
-                        </controls:SettingsExpander.Items>
-                    </controls:SettingsExpander>
-                    <!--  tarjetas de reglas  -->
-                    <controls:SettingsExpander
-                        Margin="0,2"
-                        Description="The SettingsExpander has the same properties as a SettingsCard"
-                        Header="SettingsExpander"
-                        HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}">
-                        <ToggleSwitch
-                            IsOn="True"
-                            OffContent="Desactivado"
-                            OnContent="Activado" />
-                        <controls:SettingsExpander.Items>
-                            <controls:SettingsCard Header="A basic SettingsCard within an SettingsExpander">
-                                <Button Content="Button" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard
-                                Description="SettingsCard within an Expander can be made clickable too!"
-                                Header="This item can be clicked"
-                                IsClickEnabled="True" />
-
-                            <controls:SettingsCard ContentAlignment="Left">
-                                <CheckBox Content="Here the ContentAlignment is set to Left. This is great for e.g. CheckBoxes or RadioButtons" />
-                            </controls:SettingsCard>
-                        </controls:SettingsExpander.Items>
-                    </controls:SettingsExpander>
-                    <!--  tarjetas de reglas  -->
-                    <controls:SettingsExpander
-                        Margin="0,2"
-                        Description="The SettingsExpander has the same properties as a SettingsCard"
-                        Header="SettingsExpander"
-                        HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}">
-                        <ToggleSwitch
-                            IsOn="True"
-                            OffContent="Desactivado"
-                            OnContent="Activado" />
-                        <controls:SettingsExpander.Items>
-                            <controls:SettingsCard Header="A basic SettingsCard within an SettingsExpander">
-                                <Button Content="Button" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard
-                                Description="SettingsCard within an Expander can be made clickable too!"
-                                Header="This item can be clicked"
-                                IsClickEnabled="True" />
-
-                            <controls:SettingsCard ContentAlignment="Left">
-                                <CheckBox Content="Here the ContentAlignment is set to Left. This is great for e.g. CheckBoxes or RadioButtons" />
-                            </controls:SettingsCard>
-                        </controls:SettingsExpander.Items>
-                    </controls:SettingsExpander>
-                    <!--  tarjetas de reglas  -->
-                    <controls:SettingsExpander
-                        Margin="0,2"
-                        Description="The SettingsExpander has the same properties as a SettingsCard"
-                        Header="SettingsExpander"
-                        HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}">
-                        <ToggleSwitch
-                            IsOn="True"
-                            OffContent="Desactivado"
-                            OnContent="Activado" />
-                        <controls:SettingsExpander.Items>
-                            <controls:SettingsCard Header="A basic SettingsCard within an SettingsExpander">
-                                <Button Content="Button" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard
-                                Description="SettingsCard within an Expander can be made clickable too!"
-                                Header="This item can be clicked"
-                                IsClickEnabled="True" />
-
-                            <controls:SettingsCard ContentAlignment="Left">
-                                <CheckBox Content="Here the ContentAlignment is set to Left. This is great for e.g. CheckBoxes or RadioButtons" />
-                            </controls:SettingsCard>
-                        </controls:SettingsExpander.Items>
-                    </controls:SettingsExpander>
-                    <!--  tarjetas de reglas  -->
-                    <controls:SettingsExpander
-                        Margin="0,2"
-                        Description="The SettingsExpander has the same properties as a SettingsCard"
-                        Header="SettingsExpander"
-                        HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}">
-                        <ToggleSwitch
-                            IsOn="True"
-                            OffContent="Desactivado"
-                            OnContent="Activado" />
-                        <controls:SettingsExpander.Items>
-                            <controls:SettingsCard Header="A basic SettingsCard within an SettingsExpander">
-                                <Button Content="Button" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard
-                                Description="SettingsCard within an Expander can be made clickable too!"
-                                Header="This item can be clicked"
-                                IsClickEnabled="True" />
-
-                            <controls:SettingsCard ContentAlignment="Left">
-                                <CheckBox Content="Here the ContentAlignment is set to Left. This is great for e.g. CheckBoxes or RadioButtons" />
-                            </controls:SettingsCard>
-                        </controls:SettingsExpander.Items>
-                    </controls:SettingsExpander>
-                    <!--  tarjetas de reglas  -->
-                    <controls:SettingsExpander
-                        Margin="0,2"
-                        Description="The SettingsExpander has the same properties as a SettingsCard"
-                        Header="SettingsExpander"
-                        HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}">
-                        <ToggleSwitch
-                            IsOn="True"
-                            OffContent="Desactivado"
-                            OnContent="Activado" />
-                        <controls:SettingsExpander.Items>
-                            <controls:SettingsCard Header="A basic SettingsCard within an SettingsExpander">
-                                <Button Content="Button" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard
-                                Description="SettingsCard within an Expander can be made clickable too!"
-                                Header="This item can be clicked"
-                                IsClickEnabled="True" />
-
-                            <controls:SettingsCard ContentAlignment="Left">
-                                <CheckBox Content="Here the ContentAlignment is set to Left. This is great for e.g. CheckBoxes or RadioButtons" />
-                            </controls:SettingsCard>
-                        </controls:SettingsExpander.Items>
-                    </controls:SettingsExpander>
+            <StackPanel
+                Grid.Row="0"
+                Margin="0,20,15,0"
+                Padding="0,0,15,0"
+                HorizontalAlignment="Stretch"
+                Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <CommandBar>
+                        <AppBarButton Icon="Add" Label="Crear regla" />
+                        <AppBarButton Icon="Play" Label="Organizar" />
+                        <AppBarButton Icon="Share" Label="Share" />
+                    </CommandBar>
                 </StackPanel>
-            </Grid>
-        </ScrollView>
-    </Grid>
 
+                <!--  Configuración de Carpeta  -->
+                <controls:SettingsCard
+                    Margin="0,10"
+                    Description="{Binding}"
+                    Header="Configuración de Carpeta"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE838;}">
+                    <Button Content="Abrir carpeta" />
+                </controls:SettingsCard>
+            </StackPanel>
+            <!--  Reglas  -->
+            <!--  Configuración de Reglas  -->
+            <controls:HeaderedContentControl
+                Grid.Row="1"
+                Margin="0,8,30,0"
+                Padding="0,0,30,0"
+                HorizontalContentAlignment="Stretch"
+                Header="Reglas">
+                <ItemsControl ItemsSource="{x:Bind ViewModel.Source}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <!--  Configuración de Expansión para cada Regla  -->
+                            <controls:SettingsExpander
+                                Margin="0,4"
+                                Description="{Binding Description}"
+                                Header="{Binding Name}"
+                                HeaderIcon="{ui:FontIcon Glyph=&#xE90B;}">
+                                <ToggleSwitch
+                                    IsOn="{Binding IsActive}"
+                                    OffContent="Desactivado"
+                                    OnContent="Activado" />
+
+                                <controls:SettingsExpander.Items>
+                                    <controls:SettingsCard Header="Configuración Avanzada">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Margin="0,0,10,0" Content="Editar" />
+                                            <Button Content="Eliminar" />
+                                        </StackPanel>
+                                    </controls:SettingsCard>
+                                </controls:SettingsExpander.Items>
+                            </controls:SettingsExpander>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </controls:HeaderedContentControl>
+        </Grid>
+
+    </ScrollView>
 </Page>
