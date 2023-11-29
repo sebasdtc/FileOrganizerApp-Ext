@@ -1,0 +1,38 @@
+[
+  {
+    "Name": "Archivos de Videos",
+    "Description": "C:\\Videos",
+    "Icon": "\uE714",
+    "IsActive": true,
+    "Filter": {
+      "Name": null,
+      "CreateStartDate": null,
+      "CreateEndDate": null,
+      "Extensions": [ ".mp4", ".mov" ]
+    }
+  },
+  {
+    "Name": "Archivos de Imagenes",
+    "Description": "C:\\Images",
+    "Icon": "\uE8B9",
+    "IsActive": true,
+    "Filter": {
+      "Name": null,
+      "CreateStartDate": null,
+      "CreateEndDate": null,
+      "Extensions": [ ".jpeg", ".png", ".svg" ]
+    }
+  },
+  {
+    "Name": "Archivos de Documentos",
+    "Description": "C:\\Document",
+    "Icon": "\uE8A5",
+    "IsActive": true,
+    "Filter": {
+      "Name": null,
+      "CreateStartDate": null,
+      "CreateEndDate": null,
+      "Extensions": [ ".pdf", ".xlsx", ".doc" ]
+    }
+  }
+]

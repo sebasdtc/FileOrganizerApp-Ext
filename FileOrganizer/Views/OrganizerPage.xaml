@@ -5,40 +5,99 @@
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:FileOrganizer.Core.Models"
     xmlns:ui="using:CommunityToolkit.WinUI"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
     <ScrollView>
+
         <Grid x:Name="ContentArea" Margin="0,0,0,20">
+
+            <!--#region Division de las filas-->
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
+            <!--#endregion-->
+
+            <!--#region Diseño de un contentDialog personalizado-->
+
+            <ContentDialog
+                x:Name="EditDialog"
+                Background="{ThemeResource SystemAccentColor}"
+                CloseButtonText="Cancel"
+                PrimaryButtonText="Update">
+                <RelativePanel HorizontalAlignment="Stretch">
+                    <TextBox
+                        x:Name="Name"
+                        Margin="4"
+                        Header="Name" />
+                    <TextBox
+                        x:Name="Kind"
+                        Margin="4"
+                        Header="Kind"
+                        RelativePanel.AlignRightWithPanel="True"
+                        RelativePanel.RightOf="Name" />
+                    <TextBox
+                        x:Name="ImagePath"
+                        Margin="4"
+                        Header="Path to Image"
+                        RelativePanel.AlignLeftWith="Name"
+                        RelativePanel.AlignRightWith="Kind"
+                        RelativePanel.Below="Name" />
+                    <TextBox
+                        x:Name="Description"
+                        Margin="4"
+                        Header="Description"
+                        RelativePanel.AlignLeftWith="ImagePath"
+                        RelativePanel.AlignRightWith="ImagePath"
+                        RelativePanel.Below="ImagePath"
+                        TextWrapping="Wrap" />
+                </RelativePanel>
+            </ContentDialog>
+
+
+            <!--#endregion-->
+
+            <!--#region Creacion del header-->
+            <!--  Controles de encabezados  -->
             <StackPanel
                 Grid.Row="0"
                 Margin="0,20,15,0"
                 Padding="0,0,15,0"
                 HorizontalAlignment="Stretch"
-                Background="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <CommandBar>
-                        <AppBarButton Icon="Add" Label="Crear regla" />
-                        <AppBarButton Icon="Play" Label="Organizar" />
-                        <AppBarButton Icon="Share" Label="Share" />
-                    </CommandBar>
-                </StackPanel>
+                Background="Transparent"
+                Orientation="Vertical">
+                <CommandBar
+                    Margin="0,0,0,20"
+                    HorizontalAlignment="Left"
+                    Background="Transparent"
+                    DefaultLabelPosition="Right"
+                    IsOpen="False">
+                    <AppBarButton
+                        Click="CreateRule_Click"
+                        Icon="Add"
+                        Label="Nueva regla" />
+                    <AppBarButton Icon="Delete" Label="Eliminar" />
+                    <AppBarButton x:Name="btnOrganizer" Label="Organizar">
+                        <FontIcon Glyph="&#xE895;" />
+                    </AppBarButton>
+                </CommandBar>
+
 
                 <!--  Configuración de Carpeta  -->
                 <controls:SettingsCard
-                    Margin="0,10"
-                    Description="{Binding}"
+                    x:Name="SelectedFolder"
                     Header="Configuración de Carpeta"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE838;}">
-                    <Button Content="Abrir carpeta" />
+                    <Button Click="SelectInputFolderAsync_Click" Content="Abrir carpeta" />
                 </controls:SettingsCard>
             </StackPanel>
-            <!--  Reglas  -->
-            <!--  Configuración de Reglas  -->
+            <!--#endregion-->
+
+            <!--#region Configuración de Reglas 1-->
             <controls:HeaderedContentControl
                 Grid.Row="1"
                 Margin="0,8,30,0"
@@ -47,22 +106,28 @@
                 Header="Reglas">
                 <ItemsControl ItemsSource="{x:Bind ViewModel.Source}">
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="models:Rule">
                             <!--  Configuración de Expansión para cada Regla  -->
                             <controls:SettingsExpander
                                 Margin="0,4"
-                                Description="{Binding Description}"
-                                Header="{Binding Name}"
-                                HeaderIcon="{ui:FontIcon Glyph=&#xE90B;}">
+                                Description="{x:Bind Description}"
+                                Header="{x:Bind Name}">
+                                <controls:SettingsExpander.HeaderIcon>
+                                    <FontIcon Glyph="{x:Bind Icon}" />
+                                </controls:SettingsExpander.HeaderIcon>
                                 <ToggleSwitch
-                                    IsOn="{Binding IsActive}"
+                                    IsOn="{x:Bind IsActive, Mode=TwoWay}"
                                     OffContent="Desactivado"
                                     OnContent="Activado" />
-
                                 <controls:SettingsExpander.Items>
                                     <controls:SettingsCard Header="Configuración Avanzada">
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Margin="0,0,10,0" Content="Editar" />
+                                            <Button
+                                                x:Name="BtnEdit"
+                                                Margin="0,0,10,0"
+                                                Click="Edit_Click"
+                                                CommandParameter="{Binding}"
+                                                Content="Editar" />
                                             <Button Content="Eliminar" />
                                         </StackPanel>
                                     </controls:SettingsCard>
@@ -72,7 +137,8 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </controls:HeaderedContentControl>
-        </Grid>
+            <!--#endregion-->
 
+        </Grid>
     </ScrollView>
 </Page>

@@ -66,9 +66,11 @@ public partial class App : Application
 
             // Core Services
             services.AddSingleton<IFileService, FileService>();
-            services.AddSingleton<IDataAccessService, DataAccessService>();
+            services.AddSingleton<IRuleService, RuleService>();
 
             // Views and ViewModels
+            services.AddTransient<RulerConfigurationViewModel>();
+            services.AddTransient<RulerConfigurationPage>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<OrganizerViewModel>();

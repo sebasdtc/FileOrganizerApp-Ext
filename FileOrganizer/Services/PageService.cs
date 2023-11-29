@@ -17,6 +17,7 @@ public class PageService : IPageService
         Configure<HomeViewModel, HomePage>();
         Configure<OrganizerViewModel, OrganizerPage>();
         Configure<SettingsViewModel, SettingsPage>();
+        Configure<RulerConfigurationViewModel, RulerConfigurationPage>();
     }
 
     public Type GetPageType(string key)
