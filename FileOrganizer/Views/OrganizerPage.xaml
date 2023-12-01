@@ -22,45 +22,6 @@
 
             <!--#endregion-->
 
-            <!--#region Diseño de un contentDialog personalizado-->
-
-            <ContentDialog
-                x:Name="EditDialog"
-                Background="{ThemeResource SystemAccentColor}"
-                CloseButtonText="Cancel"
-                PrimaryButtonText="Update">
-                <RelativePanel HorizontalAlignment="Stretch">
-                    <TextBox
-                        x:Name="Name"
-                        Margin="4"
-                        Header="Name" />
-                    <TextBox
-                        x:Name="Kind"
-                        Margin="4"
-                        Header="Kind"
-                        RelativePanel.AlignRightWithPanel="True"
-                        RelativePanel.RightOf="Name" />
-                    <TextBox
-                        x:Name="ImagePath"
-                        Margin="4"
-                        Header="Path to Image"
-                        RelativePanel.AlignLeftWith="Name"
-                        RelativePanel.AlignRightWith="Kind"
-                        RelativePanel.Below="Name" />
-                    <TextBox
-                        x:Name="Description"
-                        Margin="4"
-                        Header="Description"
-                        RelativePanel.AlignLeftWith="ImagePath"
-                        RelativePanel.AlignRightWith="ImagePath"
-                        RelativePanel.Below="ImagePath"
-                        TextWrapping="Wrap" />
-                </RelativePanel>
-            </ContentDialog>
-
-
-            <!--#endregion-->
-
             <!--#region Creacion del header-->
             <!--  Controles de encabezados  -->
             <StackPanel

@@ -13,6 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Data\IconsData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Data\ruleconfiguration.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

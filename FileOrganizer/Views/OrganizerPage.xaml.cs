@@ -1,4 +1,5 @@
 ﻿using FileOrganizer.Core.Models;
+using FileOrganizer.Dialogs;
 using FileOrganizer.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -53,15 +54,10 @@ public sealed partial class OrganizerPage : Page
 
     private async void CreateRule_Click(object sender, RoutedEventArgs e)
     {
-        await EditDialog.ShowAsync();
+        var customerContentDialog = new RuleDetailsDialog
+        {
+            XamlRoot = this.XamlRoot
+        };
+        await customerContentDialog.ShowAsync();
     }
-
-    //private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
-    //{
-    //    if (sender is ToggleSwitch toggleSwitch)
-    //    {
-    //        bool isCheked = toggleSwitch.IsOn;
-
-    //    }
-    //}
 }
